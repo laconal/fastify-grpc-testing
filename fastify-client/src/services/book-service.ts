@@ -1,15 +1,12 @@
-import type { newBookInterface } from "../routes/books-router/schemas.js"
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
-import { resolve } from "node:dns";
-import { number, string } from "zod";
-import { id } from "zod/locales";
+import { env } from "prisma/config";
 
 const packageDef = protoLoader.loadSync("src/proto/book.proto");
 const proto = grpc.loadPackageDefinition(packageDef) as any;
 
 const client = new proto.book.BookService(
-  'localhost:3001',
+  env("gRPC_SERVER_URL"),
   grpc.credentials.createInsecure()
 );
 
