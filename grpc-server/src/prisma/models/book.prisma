@@ -1,0 +1,6 @@
+model Book {
+  id          Int      @id @default(autoincrement())
+  title       String
+  authorID    Int
+  createdDate DateTime @default(now())
+}

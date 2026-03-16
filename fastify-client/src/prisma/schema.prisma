@@ -1,0 +1,9 @@
+generator client {
+  provider       = "prisma-client"
+  output         = "prisma"
+  priviewFeature = ["prismaSchemaFolder"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
